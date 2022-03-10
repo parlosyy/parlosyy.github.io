@@ -1,1 +1,17 @@
-#article-container figure.highlight,#article-container pre{color:#a9a9a9;background:#f3f3f3}#article-container figure.highlight .highlight-tools{color:#a9a9a9;background:#eee}#article-container figure.highlight .gutter pre{color:#999;background:#f3f3f3}#article-container figure.highlight figcaption a{color:#f3f3f3!important}
+.markdown-body
+pre
+padding-bottom 5px
+
+                code
+                padding 1rem 0 .5rem 0
+
+&::before
+ content ' '
+position absolute
+background #fc625d
+border-radius 50%
+box-shadow 20px 0 #fdbc40, 40px 0 #35cd4b
+                                  margin-top -20px
+                                                left 12px
+                                                       height 12px
+                                                                width 12px

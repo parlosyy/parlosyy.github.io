@@ -1,0 +1,27 @@
+body{
+    cursor: url("/images/cur/9.png"), default !important;
+  }
+div {
+  cursor: url("/images/cur/9.png"), default !important;
+}
+a:hover {
+  cursor: url("/images/cur/link.png"), pointer !important;
+}
+a:hover span {
+  cursor: url("/images/cur/link.png"), pointer !important;
+}
+div:hover img {
+  cursor: url("/images/cur/link.png"), pointer !important;
+}
+div:hover span {
+  cursor: url("/images/cur/link.png"), pointer !important;
+}
+div:hover button {
+  cursor: url("/images/cur/link.png"), pointer !important;
+}
+div:hover textarea {
+  cursor: url("/images/cur/text.png"), pointer !important;
+}
+div:hover input {
+  cursor: url("/images/cur/text.png"), pointer !important;
+}

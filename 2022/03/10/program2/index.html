@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Parlos">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="图图的存储邻接矩阵存储：有向图在uv位置加权重；若为无向图则uv和vu均更新 邻接链表存储： 链式前向星存储：123456789101112131415161718&#x2F;&#x2F;链式前向星存储struct EDGE&amp;#123;    int u, v, w, next;&amp;#125; e[maxn];int head[maxn];int tot &#x3D; 0;void add(int u, int v, int w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Computer Programming">
+<meta property="og:url" content="https://parlosyy.github.io/2022/03/10/program2/index.html">
+<meta property="og:site_name" content="Yys super blog">
+<meta property="og:description" content="图图的存储邻接矩阵存储：有向图在uv位置加权重；若为无向图则uv和vu均更新 邻接链表存储： 链式前向星存储：123456789101112131415161718&#x2F;&#x2F;链式前向星存储struct EDGE&amp;#123;    int u, v, w, next;&amp;#125; e[maxn];int head[maxn];int tot &#x3D; 0;void add(int u, int v, int w">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618001720.png">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618001825.png">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618001608.png">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618002325.png">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618071943.png">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618072244.png">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618072256.png">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618074028.png">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618074359.png">
+<meta property="og:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618123330.png">
+<meta property="article:published_time" content="2022-03-10T05:50:39.000Z">
+<meta property="article:modified_time" content="2022-03-10T05:52:22.882Z">
+<meta property="article:author" content="Parlos">
+<meta property="article:tag" content="programming">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://parlosyy.github.io/C:/Users/99571/Desktop/同步于互斥/QQ截图20210618001720.png">
+  
+  
+  <title>Computer Programming - Yys super blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mac.css">
+<link rel="stylesheet" href="/css/cur.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"parlosyy.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Parlos Yuan&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/20210927214634_64492.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Computer Programming">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-10 13:50" pubdate>
+        2022年3月10日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Computer Programming</h1>
+            
+            <div class="markdown-body">
+              <h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h3 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h3><h4 id="邻接矩阵存储："><a href="#邻接矩阵存储：" class="headerlink" title="邻接矩阵存储："></a>邻接矩阵存储：</h4><p>有向图在uv位置加权重；若为无向图则uv和vu均更新</p>
+<h4 id="邻接链表存储："><a href="#邻接链表存储：" class="headerlink" title="邻接链表存储："></a>邻接链表存储：</h4><p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618001720.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h4 id="链式前向星存储："><a href="#链式前向星存储：" class="headerlink" title="链式前向星存储："></a>链式前向星存储：</h4><figure class="highlight stan"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><pre><code class="hljs stan"><span class="hljs-comment">//链式前向星存储</span><br>struct EDGE<br>&#123;<br>    <span class="hljs-type">int</span> u, v, w, next;<br>&#125; e[maxn];<br><span class="hljs-type">int</span> <span class="hljs-built_in">head</span>[maxn];<br><span class="hljs-type">int</span> tot = <span class="hljs-number">0</span>;<br><span class="hljs-type">void</span> add(<span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v, <span class="hljs-type">int</span> w)<br>&#123;<br>	e[tot].u = u;<br>    e[tot].v = v;<br>    e[tot].w = w;<br>    e[tot].next = <span class="hljs-built_in">head</span>[u];<br>    <span class="hljs-built_in">head</span>[u] = tot;<br>    tot++;<br>&#125;<br><br>memset(<span class="hljs-built_in">head</span>, <span class="hljs-number">0</span>, sizeof(<span class="hljs-built_in">head</span>));<br></code></pre></td></tr></table></figure>
+<h3 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h3><h4 id="邻接链表的dfs"><a href="#邻接链表的dfs" class="headerlink" title="邻接链表的dfs"></a>邻接链表的dfs</h4><p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618001825.png" srcset="/img/loading.gif" lazyload style="zoom: 80%;"></p>
+<h4 id="链式前向星的dfs"><a href="#链式前向星的dfs" class="headerlink" title="链式前向星的dfs"></a>链式前向星的dfs</h4><p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618001608.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p>
+<h3 id="树的直径问题"><a href="#树的直径问题" class="headerlink" title="树的直径问题"></a>树的直径问题</h3><h4 id="树的直径一定是从一个叶子到另一个叶子，两遍dfs可得到答案"><a href="#树的直径一定是从一个叶子到另一个叶子，两遍dfs可得到答案" class="headerlink" title="树的直径一定是从一个叶子到另一个叶子，两遍dfs可得到答案"></a>树的直径一定是从一个叶子到另一个叶子，两遍dfs可得到答案</h4><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs inform7">void dfs(int u) &#123;<br>	for (int i = 0, n = g<span class="hljs-comment">[u]</span>.size(); i &lt; n; i++) &#123;<br>		if (!vis<span class="hljs-comment">[g<span class="hljs-comment">[u]</span><span class="hljs-comment">[i]</span>]</span>) &#123;<br>			vis<span class="hljs-comment">[g<span class="hljs-comment">[u]</span><span class="hljs-comment">[i]</span>]</span> = 1;<br>			maxn++;<br>			if (maxn &gt; maxs) &#123;<br>				maxs = maxn;<br>				maxp = g<span class="hljs-comment">[u]</span><span class="hljs-comment">[i]</span>;<br>			&#125;<br>			dfs(g<span class="hljs-comment">[u]</span><span class="hljs-comment">[i]</span>);<br>			maxn--;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><p>find函数查询x所在的代表元</p>
+<p>unite函数实现两个集合的合并，将一个集合挂到另一个上</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">int</span> par[maxn]; <span class="hljs-comment">// 一个元素所在集合的代表元,par[i]为i的代表元</span><br><span class="hljs-keyword">int</span> <span class="hljs-keyword">find</span>(<span class="hljs-keyword">int</span> x) &#123;  <br>	<span class="hljs-keyword">if</span> (par[x] == x) <span class="hljs-comment">// 是其自己</span><br>		<span class="hljs-keyword">return</span> x;<br>	<span class="hljs-keyword">return</span> par[x] = <span class="hljs-keyword">find</span>(par[x]);<br>&#125;<br><br>bool unite(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y) &#123;<br>	<span class="hljs-keyword">int</span> a = <span class="hljs-keyword">find</span>(x);<br>	<span class="hljs-keyword">int</span> b = <span class="hljs-keyword">find</span>(y);<br>	<span class="hljs-keyword">if</span> (a == b) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>	par[b] = a;<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>&#125;<br><span class="hljs-comment">// 初始化par[i] = i;</span><br></code></pre></td></tr></table></figure>
+<h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><p>每次贪心地尝试将图中最小的非树边标记为树边，非法则跳过</p>
+<p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618002325.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">point</span> &#123;<br>	<span class="hljs-type">int</span> a;<br>	<span class="hljs-type">int</span> b;<br>	<span class="hljs-type">long</span> <span class="hljs-type">long</span> c;<br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-type">const</span> point&amp; p) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> c &lt; p.c; &#125;<br>&#125;;<br>vector&lt;point&gt; v;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (par[x] == x)<br>		<span class="hljs-keyword">return</span> x;<br>	<span class="hljs-keyword">return</span> par[x] = <span class="hljs-built_in">find</span>(par[x]);<br>&#125;<br> <br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">unite</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> </span>&#123;<br>	<span class="hljs-type">int</span> a = <span class="hljs-built_in">find</span>(x);<br>	<span class="hljs-type">int</span> b = <span class="hljs-built_in">find</span>(y);<br>	<span class="hljs-keyword">if</span> (a == b) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>	par[b] = a;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br> <br><span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">kur</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-built_in">sort</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>());<br>	<span class="hljs-type">long</span> <span class="hljs-type">long</span> res = <span class="hljs-number">0</span>, count = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; v.<span class="hljs-built_in">size</span>(); i++) &#123;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">unite</span>(v[i].a, v[i].b)) &#123;<br>			res += v[i].c;<br>			count++;<br>		&#125;<br>		<span class="hljs-keyword">if</span> (count == n) <span class="hljs-keyword">break</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h3><p>用于求取图中任意两点之间的关系，多源最短路</p>
+<p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618071943.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3 id="dijkstra算法"><a href="#dijkstra算法" class="headerlink" title="dijkstra算法"></a>dijkstra算法</h3><p>用于求取没有负权边的单源最短路径</p>
+<p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618072244.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618072256.png" srcset="/img/loading.gif" lazyload alt></p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs inform7">void dijkstra(int s, int n)<br>&#123;<br>    priority_queue&lt;pa, vector&lt;pa&gt;, greater&lt;pa&gt;&gt; q;<br>    for (int i = 1; i &lt;= n; i++)<br>        dis<span class="hljs-comment">[i]</span> = inf, vis<span class="hljs-comment">[i]</span> = 0;<br>    dis<span class="hljs-comment">[s]</span> = 0;<br>    q.push(make_pair(0, s));<br>    while (!q.empty())<br>    &#123;<br>        int x = q.top().second;<br>        q.pop();<br>        if (vis<span class="hljs-comment">[x]</span>)<br>            continue;<br>        vis<span class="hljs-comment">[x]</span> = 1;<br>        for (int pos = head<span class="hljs-comment">[x]</span>; pos; pos = e<span class="hljs-comment">[pos]</span>.next)<br>        &#123;<br>            if (dis<span class="hljs-comment">[e<span class="hljs-comment">[pos]</span>.to]</span> &gt; dis<span class="hljs-comment">[x]</span> + e<span class="hljs-comment">[pos]</span>.w)<br>            &#123;<br>                dis<span class="hljs-comment">[e<span class="hljs-comment">[pos]</span>.to]</span> = dis<span class="hljs-comment">[x]</span> + e<span class="hljs-comment">[pos]</span>.w;<br>                q.push(make_pair(dis<span class="hljs-comment">[e<span class="hljs-comment">[pos]</span>.to]</span>, e<span class="hljs-comment">[pos]</span>.to));<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="当遇到返回起点的问题，可以考虑用两个方向做两次dijkstra算法"><a href="#当遇到返回起点的问题，可以考虑用两个方向做两次dijkstra算法" class="headerlink" title="当遇到返回起点的问题，可以考虑用两个方向做两次dijkstra算法"></a>当遇到返回起点的问题，可以考虑用两个方向做两次dijkstra算法</h5><h3 id="SPFA算法"><a href="#SPFA算法" class="headerlink" title="SPFA算法"></a>SPFA算法</h3><p>cnt[x]表示 x 当前最短路上的边数</p>
+<p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618074028.png" srcset="/img/loading.gif" lazyload alt></p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs inform7">void init(int s)<br>&#123;<br>    for (int i = 1; i &lt;= n + 1; i++)<br>    &#123;<br>        dis<span class="hljs-comment">[i]</span> = inf;<br>        vis<span class="hljs-comment">[i]</span> = 0;<br>    &#125;<br>    dis<span class="hljs-comment">[s]</span> = 0;<br>    can<span class="hljs-comment">[s]</span> = 1;<br>&#125;<br>void spfa(int s)<br>&#123;<br>    init(s);<br>    queue&lt;int&gt; q;<br>    q.push(s);<br>    while (!q.empty()) //队列非空<br>    &#123;<br>        int u = q.front(); //取队首元素<br>        vis<span class="hljs-comment">[u]</span> = 0;<br>        q.pop();<br>        for (int i = head<span class="hljs-comment">[u]</span>; i; i = e<span class="hljs-comment">[i]</span>.next)<br>            if (dis<span class="hljs-comment">[e<span class="hljs-comment">[i]</span>.to]</span> &gt; dis<span class="hljs-comment">[u]</span> + e<span class="hljs-comment">[i]</span>.w)<br>            &#123;<br>                dis<span class="hljs-comment">[e<span class="hljs-comment">[i]</span>.to]</span> = dis<span class="hljs-comment">[u]</span> + e<span class="hljs-comment">[i]</span>.w;<br>                pre<span class="hljs-comment">[e<span class="hljs-comment">[i]</span>.to]</span> = u;<br>                if (!can<span class="hljs-comment">[e<span class="hljs-comment">[i]</span>.to]</span>)<br>                &#123;<br>                    can<span class="hljs-comment">[e<span class="hljs-comment">[i]</span>.to]</span> = 1;<br>                    q.push(e<span class="hljs-comment">[i]</span>.to);<br>                &#125;<br>            &#125; <br>        can<span class="hljs-comment">[u]</span> = 0;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="最长路问题"><a href="#最长路问题" class="headerlink" title="最长路问题"></a>最长路问题</h3><p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618074359.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
+<h3 id="负权环路"><a href="#负权环路" class="headerlink" title="负权环路"></a>负权环路</h3><p>cnt[x] 表示 x 当前最短路上的边数</p>
+<p>每次更新最短路时更新 cnt[v]，若某一时刻 cnt[v] 大于等于 n 的话，说明图中存在负环</p>
+<p><img src="/C:/Users\99571\Desktop\同步于互斥\QQ截图20210618123330.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;"></p>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><p>对于有向无环图求其满足边的依赖的排序</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp">priority_queue&lt;<span class="hljs-type">int</span>, vector&lt;<span class="hljs-type">int</span>&gt;, greater&lt;<span class="hljs-type">int</span>&gt;&gt; q; <span class="hljs-comment">// 优先级队列</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">toposort</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>        <span class="hljs-keyword">if</span> (in_deg[i] == <span class="hljs-number">0</span>) <span class="hljs-comment">// 入度为0 插入队列</span><br>            q.<span class="hljs-built_in">push</span>(i);<br>    <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>())<br>    &#123;<br>        <span class="hljs-type">int</span> t = q.<span class="hljs-built_in">top</span>();<br>        q.<span class="hljs-built_in">pop</span>();<br>        cout &lt;&lt; t &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = head[t]; i; i = e[i].next)<br>        &#123;<br>            in_deg[e[i].to]--;<br>            <span class="hljs-keyword">if</span> (in_deg[e[i].to] == <span class="hljs-number">0</span>)<br>                q.<span class="hljs-built_in">push</span>(e[i].to);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="kosaraju-强连通分量算法"><a href="#kosaraju-强连通分量算法" class="headerlink" title="kosaraju 强连通分量算法"></a>kosaraju 强连通分量算法</h3><p>SCC强连通分量，一个scc内的所有点都两两可达</p>
+<p>前序：第一次达到点x的次序，用d[x]表示<br>后序：x点遍历完成的次序，即回溯时间，用f[x]表示</p>
+<p>第一遍dfs确定原图的逆后序序列<br>第二遍dfs在反图中按照逆后序序列进行遍历</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs llvm">int <span class="hljs-keyword">c</span>[MAXN]<span class="hljs-punctuation">,</span> dfn[MAXN]<span class="hljs-punctuation">,</span> vis[MAXN]<span class="hljs-punctuation">,</span> dcnt<span class="hljs-punctuation">,</span> scnt<span class="hljs-punctuation">,</span> head[MAXN]<span class="hljs-comment">;</span><br>vector&lt;int&gt; g<span class="hljs-number">1</span>[MAXN]<span class="hljs-punctuation">,</span> g<span class="hljs-number">2</span>[MAXN]<span class="hljs-comment">; // g1原图，g2反图</span><br>struct node<br>&#123;<br>    int from<span class="hljs-punctuation">,</span> <span class="hljs-keyword">to</span><span class="hljs-comment">;</span><br>&#125; e[MAXN]<span class="hljs-comment">;</span><br><span class="hljs-comment"></span><br>void dfs<span class="hljs-number">1</span>(int <span class="hljs-keyword">x</span>)<br>&#123;<br>    vis[<span class="hljs-keyword">x</span>] <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">;</span><br>    for (auto y : g<span class="hljs-number">1</span>[<span class="hljs-keyword">x</span>])<br>    &#123;<br>        if (<span class="hljs-title">!vis</span>[y])<br>            dfs<span class="hljs-number">1</span>(y)<span class="hljs-comment">;</span><br>    &#125;<br>    dfn[++dcnt] <span class="hljs-operator">=</span> <span class="hljs-keyword">x</span><span class="hljs-comment">;</span><br>&#125;<br>void dfs<span class="hljs-number">2</span>(int <span class="hljs-keyword">x</span>)<br>&#123;<br>    <span class="hljs-keyword">c</span>[<span class="hljs-keyword">x</span>] <span class="hljs-operator">=</span> scnt<span class="hljs-comment">;</span><br>    for (auto y : g<span class="hljs-number">2</span>[<span class="hljs-keyword">x</span>])<br>    &#123;<br>        if (<span class="hljs-title">!c</span>[y])<br>            dfs<span class="hljs-number">2</span>(y)<span class="hljs-comment">;</span><br>    &#125;<br>&#125;<br>void kosaraju()<br>&#123;<br>    dcnt <span class="hljs-operator">=</span> scnt <span class="hljs-operator">=</span> <span class="hljs-number">0</span><span class="hljs-comment">;</span><br>    memset(<span class="hljs-keyword">c</span><span class="hljs-punctuation">,</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span> sizeof(<span class="hljs-keyword">c</span>))<span class="hljs-comment">;</span><br>    memset(vis<span class="hljs-punctuation">,</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span> sizeof(vis))<span class="hljs-comment">;</span><br>    for (int i <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">; i &lt;= n; i++)</span><br>        if (<span class="hljs-title">!vis</span>[i])<br>            dfs<span class="hljs-number">1</span>(i)<span class="hljs-comment">;</span><br>    for (int i <span class="hljs-operator">=</span> n<span class="hljs-comment">; i &gt;= 1; i--)</span><br>        if (<span class="hljs-title">!c</span>[dfn[i]])<br>            ++scnt<span class="hljs-punctuation">,</span> dfs<span class="hljs-number">2</span>(dfn[i])<span class="hljs-comment">;</span><br>&#125;<br><br>int main()<br>&#123;<br>    scanf(<span class="hljs-string">&quot;%d%d&quot;</span><span class="hljs-punctuation">,</span> &amp;n<span class="hljs-punctuation">,</span> &amp;m)<span class="hljs-comment">;</span><br>    for (int i <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">; i &lt;= m; i++)</span><br>    &#123;<br>        int a<span class="hljs-punctuation">,</span>b<span class="hljs-comment">;</span><br>        scanf(<span class="hljs-string">&quot;%d%d&quot;</span><span class="hljs-punctuation">,</span> &amp;a<span class="hljs-punctuation">,</span> &amp;b)<span class="hljs-comment">;</span><br>        e[i].from <span class="hljs-operator">=</span> a<span class="hljs-comment">;</span><br>        e[i].<span class="hljs-keyword">to</span> <span class="hljs-operator">=</span> b<span class="hljs-comment">;</span><br>        g<span class="hljs-number">1</span>[a].push_back(b)<span class="hljs-comment">;</span><br>        g<span class="hljs-number">2</span>[b].push_back(a)<span class="hljs-comment">;</span><br>    &#125;<br>    kosaraju()<span class="hljs-comment">;</span><br>    int ans <span class="hljs-operator">=</span> <span class="hljs-number">0</span><span class="hljs-comment">;</span><br>    for (int i <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">; i &lt;= m; i++)</span><br>    &#123;<br>       int u <span class="hljs-operator">=</span> <span class="hljs-keyword">c</span>[e[i].from]<span class="hljs-punctuation">,</span> v <span class="hljs-operator">=</span> <span class="hljs-keyword">c</span>[e[i].<span class="hljs-keyword">to</span>]<span class="hljs-comment">;</span><br>        if (u !<span class="hljs-operator">=</span> v)<br>            head[v]++<span class="hljs-comment">; //表示有入度</span><br>    &#125;<br>    for (int i <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">; i &lt;= scnt; i++)</span><br>        if (<span class="hljs-title">!head</span>[i])<br>            ans++<span class="hljs-comment">; // scc个数</span><br>    cout &lt;&lt; ans &lt;&lt; endl<span class="hljs-comment">;</span><br>    return <span class="hljs-number">0</span><span class="hljs-comment">;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/cs-learning/">cs learning</a>
+                    
+                      <a class="hover-with-bg" href="/categories/cs-learning/programming/">programming</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/programming/">programming</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/10/program1/">
+                        <span class="hidden-mobile">Computer Programming</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+<script src="/js/yinghua.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="/js/love.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"left","hOffset":-30,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

@@ -1,0 +1,576 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Parlos">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="动态规划dp问题基础问题爬台阶问题 最大区间和 变式：可改变一个数（仅一次） 走地图 取数 非递减字符序列 矩阵选数给定3行n列的矩阵，的从每一列选择一个数，求出后一列减去前一列的绝对值的和的最小值  最长上升子序列注意——子序列不同于子串，子串必须连续，子序列可以不连续只要按顺序即可 经过树状数组优化后的程序123456789101112131415for (int j &#x3D; d[1]; j &amp;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Computer Programming">
+<meta property="og:url" content="https://parlosyy.github.io/2022/03/10/program3/index.html">
+<meta property="og:site_name" content="Yys super blog">
+<meta property="og:description" content="动态规划dp问题基础问题爬台阶问题 最大区间和 变式：可改变一个数（仅一次） 走地图 取数 非递减字符序列 矩阵选数给定3行n列的矩阵，的从每一列选择一个数，求出后一列减去前一列的绝对值的和的最小值  最长上升子序列注意——子序列不同于子串，子串必须连续，子序列可以不连续只要按顺序即可 经过树状数组优化后的程序123456789101112131415for (int j &#x3D; d[1]; j &amp;l">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618082709.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618082720.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618083041.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618083449.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618084346.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618084407.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618084418.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618085033.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618085148.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618090129.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618090502.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618090815.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618093032.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618093225.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618093606.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618093726.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618094136.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618094301.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618095341.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618151446.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618151521.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618152329.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618152329.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618152747.png">
+<meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618152910.png">
+<meta property="article:published_time" content="2022-03-10T05:42:23.000Z">
+<meta property="article:modified_time" content="2022-03-10T05:47:22.944Z">
+<meta property="article:author" content="Parlos">
+<meta property="article:tag" content="programming">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://parlosyy.github.io/images/cs_net/QQ截图20210618082709.png">
+  
+  
+  <title>Computer Programming - Yys super blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mac.css">
+<link rel="stylesheet" href="/css/cur.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"parlosyy.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Parlos Yuan&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/20210927214634_64492.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Computer Programming">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-10 13:42" pubdate>
+        2022年3月10日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      34 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Computer Programming</h1>
+            
+            <div class="markdown-body">
+              <h1 id="动态规划dp问题"><a href="#动态规划dp问题" class="headerlink" title="动态规划dp问题"></a>动态规划dp问题</h1><h2 id="基础问题"><a href="#基础问题" class="headerlink" title="基础问题"></a>基础问题</h2><h3 id="爬台阶问题"><a href="#爬台阶问题" class="headerlink" title="爬台阶问题"></a>爬台阶问题</h3><p><img src="/images/cs_net/QQ截图20210618082709.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h3 id="最大区间和"><a href="#最大区间和" class="headerlink" title="最大区间和"></a>最大区间和</h3><p><img src="/images/cs_net/QQ截图20210618082720.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h5 id="变式：可改变一个数（仅一次）"><a href="#变式：可改变一个数（仅一次）" class="headerlink" title="变式：可改变一个数（仅一次）"></a>变式：可改变一个数（仅一次）</h5><p><img src="/images/cs_net/QQ截图20210618083041.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h3 id="走地图"><a href="#走地图" class="headerlink" title="走地图"></a>走地图</h3><p><img src="/images/cs_net/QQ截图20210618083449.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h3 id="取数"><a href="#取数" class="headerlink" title="取数"></a>取数</h3><p><img src="/images/cs_net/QQ截图20210618084346.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h3 id="非递减字符序列"><a href="#非递减字符序列" class="headerlink" title="非递减字符序列"></a>非递减字符序列</h3><p><img src="/images/cs_net/QQ截图20210618084407.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h3 id="矩阵选数"><a href="#矩阵选数" class="headerlink" title="矩阵选数"></a>矩阵选数</h3><p>给定3行n列的矩阵，的从每一列选择一个数，求出后一列减去前一列的绝对值的和的最小值</p>
+<p><img src="/images/cs_net/QQ截图20210618084418.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h3 id="最长上升子序列"><a href="#最长上升子序列" class="headerlink" title="最长上升子序列"></a>最长上升子序列</h3><h5 id="注意——子序列不同于子串，子串必须连续，子序列可以不连续只要按顺序即可"><a href="#注意——子序列不同于子串，子串必须连续，子序列可以不连续只要按顺序即可" class="headerlink" title="注意——子序列不同于子串，子串必须连续，子序列可以不连续只要按顺序即可"></a>注意——子序列不同于子串，子串必须连续，子序列可以不连续只要按顺序即可</h5><p><img src="/images/cs_net/QQ截图20210618085033.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h5 id="经过树状数组优化后的程序"><a href="#经过树状数组优化后的程序" class="headerlink" title="经过树状数组优化后的程序"></a>经过树状数组优化后的程序</h5><figure class="highlight llvm"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><pre><code class="hljs llvm">for (int j <span class="hljs-operator">=</span> d[<span class="hljs-number">1</span>]<span class="hljs-comment">; j &lt;= 1e6; j += (j &amp; (-j)))</span><br>    &#123;<br>        s[j] <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">;</span><br>    &#125;<br>    f[<span class="hljs-number">1</span>] <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">;</span><br>    // 求解i之前，所有小于Ai的元素的f[j]的最大值<br>    for (int i <span class="hljs-operator">=</span> <span class="hljs-number">2</span><span class="hljs-comment">; i &lt;= n; i++)</span><br>    &#123;<br>        int res <span class="hljs-operator">=</span> <span class="hljs-number">0</span><span class="hljs-comment">;</span><br>        for (int <span class="hljs-keyword">x</span> <span class="hljs-operator">=</span> d[i] - <span class="hljs-number">1</span><span class="hljs-comment">; x &gt;= 1; x -= (x &amp; (-x)))  //查找最大值</span><br>            res <span class="hljs-operator">=</span> <span class="hljs-keyword">max</span>(res<span class="hljs-punctuation">,</span> s[<span class="hljs-keyword">x</span>])<span class="hljs-comment">;</span><br>        f[i] <span class="hljs-operator">=</span> res + <span class="hljs-number">1</span><span class="hljs-comment">; // 更新fi</span><br>        for (int <span class="hljs-keyword">x</span> <span class="hljs-operator">=</span> d[i]<span class="hljs-comment">; x &lt;= 1e6; x += (x &amp; (-x))) // 更新树状数组</span><br>            s[<span class="hljs-keyword">x</span>] <span class="hljs-operator">=</span> <span class="hljs-keyword">max</span>(f[i]<span class="hljs-punctuation">,</span> s[<span class="hljs-keyword">x</span>])<span class="hljs-comment">;</span><br>    &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><p><img src="/images/cs_net/QQ截图20210618085148.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p>
+<h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><p>有N件物品和一个容量为V的包，第i件物品体积是Wi，价值是Vi，求解将哪些物品装入包可使这些物品的体积总和不超过背包容量，且总价值最大。</p>
+<h3 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h3><h4 id="每种物品仅有一件，可以选择放或不放——对应1或0"><a href="#每种物品仅有一件，可以选择放或不放——对应1或0" class="headerlink" title="每种物品仅有一件，可以选择放或不放——对应1或0"></a>每种物品仅有一件，可以选择放或不放——对应1或0</h4><p><img src="/images/cs_net/QQ截图20210618090129.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<h4 id="滚动数组优化"><a href="#滚动数组优化" class="headerlink" title="滚动数组优化"></a>滚动数组优化</h4><p>前后两个状态，两维优化，必须<strong>逆序遍历</strong></p>
+<p>如果是顺序的话则会出现同一件物品选多次的情况</p>
+<p><img src="/images/cs_net/QQ截图20210618090502.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs inform7">for (int i = 1; i &lt;= n; ++i)<br>    &#123;<br>        for (int j = v; j &gt;= 0; --j)<br>        &#123;<br>            if (j - w<span class="hljs-comment">[i]</span> &gt;= 0)<br>                f<span class="hljs-comment">[j]</span> = max(f<span class="hljs-comment">[j]</span>, f<span class="hljs-comment">[j - w<span class="hljs-comment">[i]</span>]</span> + c<span class="hljs-comment">[i]</span>);<br>        &#125;<br>    &#125;<br>    ans = f<span class="hljs-comment">[v]</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h3><p>每种物品有无数件，可以选择0或多件</p>
+<p>按照最优的原则可以选无数件，可好需要01背包中的<strong>正序遍历</strong></p>
+<p><img src="/images/cs_net/QQ截图20210618090815.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<h3 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h3><p>每个物品有限件，指定可放入的件数</p>
+<h5 id="二进制拆分，用尽可能少的组数覆盖所有的决策"><a href="#二进制拆分，用尽可能少的组数覆盖所有的决策" class="headerlink" title="二进制拆分，用尽可能少的组数覆盖所有的决策"></a>二进制拆分，用尽可能少的组数覆盖所有的决策</h5><p>取出小于2的n-1次的幂数，1,2,4……，剩余的直接作为一组，重量和价值改为对应倍数，再使用01背包</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs inform7">for (int i = 1; i &lt;= n; i++) //二进制分解，使用二进制数来组合出所有可能<br>    &#123;<br>        int t = s<span class="hljs-comment">[i]</span>;<br>        for (int k = 1; k &lt;= t; k &lt;&lt;= 1) //取出小于2的n-1次的幂数，1,2,4……，重量和价值改为对应倍数<br>        &#123;<br>            cnt++;<br>            vv<span class="hljs-comment">[cnt]</span> = k * c<span class="hljs-comment">[i]</span>;<br>            ww<span class="hljs-comment">[cnt]</span> = k * w<span class="hljs-comment">[i]</span>;<br>            t -= k;<br>        &#125;<br>        if (t &gt; 0) //剩余的数 直接保留不再分解 1,2 4,8,5，重量和价值改为对应倍数<br>        &#123;<br>            cnt++;<br>            vv<span class="hljs-comment">[cnt]</span> = t * c<span class="hljs-comment">[i]</span>;<br>            ww<span class="hljs-comment">[cnt]</span> = t * w<span class="hljs-comment">[i]</span>;<br>        &#125;<br>    &#125;<br>    for (int i = 1; i &lt;= cnt; ++i)<br>    &#123;<br>        for (int j = v; j &gt;= 0; --j) // 对于更新后的进行01背包即可<br>        &#123;<br>            if (j - ww<span class="hljs-comment">[i]</span> &gt;= 0)<br>                f<span class="hljs-comment">[j]</span> = max(f<span class="hljs-comment">[j]</span>, f<span class="hljs-comment">[j - ww<span class="hljs-comment">[i]</span>]</span> + vv<span class="hljs-comment">[i]</span>);<br>        &#125;<br>    &#125;<br>    ans = f<span class="hljs-comment">[v]</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="分组背包"><a href="#分组背包" class="headerlink" title="分组背包"></a>分组背包</h3><p>每种物品有1件，物品归属于共n个组，每组只能选1件</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs inform7">用w<span class="hljs-comment">[k]</span><span class="hljs-comment">[u]</span>和v<span class="hljs-comment">[k]</span><span class="hljs-comment">[u]</span>分别表示第k组的第u件物品的属性值<br>t<span class="hljs-comment">[k]</span><span class="hljs-comment">[cnt<span class="hljs-comment">[k]</span>]</span> = i; // 记录第几组第几个物品<br><br>for (int k = 1; k &lt;= ts; k++)             // 循环每一组<br>        for (int i = v; i &gt;= 0; --i)          // 循环容量<br>            for (int j = 1; j &lt;= cnt<span class="hljs-comment">[k]</span>; ++j) // 循环每组内的每个物品<br>                if (i - w<span class="hljs-comment">[t<span class="hljs-comment">[k]</span><span class="hljs-comment">[j]</span>]</span> &gt;= 0)<br>                    f<span class="hljs-comment">[i]</span> = max(f<span class="hljs-comment">[i]</span>, f<span class="hljs-comment">[i - w<span class="hljs-comment">[t<span class="hljs-comment">[k]</span><span class="hljs-comment">[j]</span>]</span>]</span> + c<span class="hljs-comment">[t<span class="hljs-comment">[k]</span><span class="hljs-comment">[j]</span>]</span>); // 取或不取<br>ans = f<span class="hljs-comment">[v]</span>;<br></code></pre></td></tr></table></figure>
+<h2 id="区间dp"><a href="#区间dp" class="headerlink" title="区间dp"></a>区间dp</h2><p><img src="/images/cs_net/QQ截图20210618093032.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<h3 id="石子合并"><a href="#石子合并" class="headerlink" title="石子合并"></a>石子合并</h3><p><img src="/images/cs_net/QQ截图20210618093225.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs excel">for (<span class="hljs-built_in">int</span> <span class="hljs-built_in">len</span> = <span class="hljs-number">2</span>; <span class="hljs-built_in">len</span> &lt;= <span class="hljs-built_in">n</span>; <span class="hljs-built_in">len</span>++)<br>    &#123;<br>        for (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">2</span> * <span class="hljs-built_in">n</span> - <span class="hljs-built_in">len</span>; i++)<br>        &#123;<br>            <span class="hljs-built_in">int</span> l = i;<br>            <span class="hljs-built_in">int</span> r = i + <span class="hljs-built_in">len</span> - <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">int</span> ans1 = maxn;<br>            <span class="hljs-built_in">int</span> ans2 = minn;<br>            for (<span class="hljs-built_in">int</span> k = l; k &lt; r; k++)<br>            &#123;<br>                ans1 = <span class="hljs-built_in">min</span>(ans1, <span class="hljs-symbol">f1</span>[l][k] + <span class="hljs-symbol">f1</span>[k + <span class="hljs-number">1</span>][r]);<br>                ans2 = <span class="hljs-built_in">max</span>(ans2, <span class="hljs-symbol">f2</span>[l][k] + <span class="hljs-symbol">f2</span>[k + <span class="hljs-number">1</span>][r]);<br>            &#125;<br>            <span class="hljs-symbol">f1</span>[l][r] = ans1 + <span class="hljs-built_in">sum</span>[r] - <span class="hljs-built_in">sum</span>[l - <span class="hljs-number">1</span>];<br>            <span class="hljs-symbol">f2</span>[l][r] = ans2 + <span class="hljs-built_in">sum</span>[r] - <span class="hljs-built_in">sum</span>[l - <span class="hljs-number">1</span>];<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="括号序列"><a href="#括号序列" class="headerlink" title="括号序列"></a>括号序列</h3><p><img src="/images/cs_net/QQ截图20210618093606.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<p><img src="/images/cs_net/QQ截图20210618093726.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs prolog">for (int i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>    &#123;<br>        f1[i][i] = <span class="hljs-number">1</span>;<br>    &#125;<br>for (int len = <span class="hljs-number">2</span>; len &lt;= n; len++)<br>    &#123;<br>        for (int i = <span class="hljs-number">0</span>; i &lt; n - len + <span class="hljs-number">1</span>; i++)<br>        &#123;<br>            int l = i;<br>            int r = i + len - <span class="hljs-number">1</span>;<br>            int ans1 = maxn;<br>            for (int k = l; k &lt; r; k++)<br>            &#123;<br>                ans1 = min(ans1, f1[l][k] + f1[k + <span class="hljs-number">1</span>][r]);<br>            &#125;<br>            if ((s[l] == <span class="hljs-string">&#x27;(&#x27;</span> &amp;&amp; s[r] == <span class="hljs-string">&#x27;)&#x27;</span>) || (s[l] == <span class="hljs-string">&#x27;[&#x27;</span> &amp;&amp; s[r] == <span class="hljs-string">&#x27;]&#x27;</span>)) <br>            // 括号成对出现，不需要另外添加，等于除去这两个以后需要的个数<br>                f1[l][r] = f1[l + <span class="hljs-number">1</span>][r - <span class="hljs-number">1</span>];<br>            else<br>                f1[l][r] = ans1;<br>            f1[l][r] = min(ans1, f1[l][r]);<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="最长回文问题"><a href="#最长回文问题" class="headerlink" title="最长回文问题"></a>最长回文问题</h3><h4 id="最长回文子串"><a href="#最长回文子串" class="headerlink" title="最长回文子串"></a>最长回文子串</h4><p><img src="/images/cs_net/QQ截图20210618094136.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<h4 id="最长回文子序列"><a href="#最长回文子序列" class="headerlink" title="最长回文子序列"></a>最长回文子序列</h4><p><img src="/images/cs_net/QQ截图20210618094301.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<h2 id="状态压缩dp"><a href="#状态压缩dp" class="headerlink" title="状态压缩dp"></a>状态压缩dp</h2><h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 查询状态S中是否有编号为i的点</span><br><span class="hljs-keyword">if</span> (s &amp; (<span class="hljs-number">1</span> &lt;&lt; i))<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">else</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <br><span class="hljs-comment">// 在状态S中添加编号为i的点</span><br>s = s | (<span class="hljs-number">1</span> &lt;&lt; i);<br><br><span class="hljs-comment">// 在状态S中删除编号为i的点</span><br><span class="hljs-keyword">if</span> (s &amp; (<span class="hljs-number">1</span> &lt;&lt; i))<br>    s = s ^ (<span class="hljs-number">1</span> &lt;&lt; i);<br></code></pre></td></tr></table></figure>
+<h3 id="棋盘分割"><a href="#棋盘分割" class="headerlink" title="棋盘分割"></a>棋盘分割</h3><p>根据格子是否会向下延伸，对其用0 1分别表示<br>平躺的长方形 / 竖直长方形的下半部分，即为0，竖直长方形的上半部分，即为1<br>f矩阵表示填充到了第 i 行，第 i 行填充状态为S的方案数</p>
+<p><img src="/images/cs_net/QQ截图20210618095341.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<h2 id="树形dp"><a href="#树形dp" class="headerlink" title="树形dp"></a>树形dp</h2><h3 id="树的直径"><a href="#树的直径" class="headerlink" title="树的直径"></a>树的直径</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs inform7">void dfs(int x, int fa)<br>&#123;<br>    bool isleaf = 1;<br>    for (int i = head<span class="hljs-comment">[x]</span>; i != -1; i = e<span class="hljs-comment">[i]</span>.next)<br>    &#123;<br>        int y = e<span class="hljs-comment">[i]</span>.v;<br>        if (y != fa)<br>        &#123; //不是叶子节点<br>            isleaf = 0;<br>            dfs(y, x); //已经求出了所有y的信息<br>            if (ans &lt; deep<span class="hljs-comment">[x]</span> + deep<span class="hljs-comment">[y]</span> + 1)<br>            &#123;<br>                ans = deep<span class="hljs-comment">[x]</span> + deep<span class="hljs-comment">[y]</span> + 1;<br>                cnt = dp<span class="hljs-comment">[x]</span> * dp<span class="hljs-comment">[y]</span>; // 乘法原理 方案数<br>            &#125;<br>            else if (ans == deep<span class="hljs-comment">[x]</span> + deep<span class="hljs-comment">[y]</span> + 1)<br>            &#123;<br>                cnt += dp<span class="hljs-comment">[x]</span> * dp<span class="hljs-comment">[y]</span>;<br>            &#125;<br>            if (deep<span class="hljs-comment">[y]</span> + 1 &gt; deep<span class="hljs-comment">[x]</span>)<br>            &#123;<br>                deep<span class="hljs-comment">[x]</span> = deep<span class="hljs-comment">[y]</span> + 1;<br>                dp<span class="hljs-comment">[x]</span> = dp<span class="hljs-comment">[y]</span>;<br>            &#125;<br>            else if (deep<span class="hljs-comment">[y]</span> + 1 == deep<span class="hljs-comment">[x]</span>)<br>            &#123;<br>                dp<span class="hljs-comment">[x]</span> += dp<span class="hljs-comment">[y]</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    if (isleaf)<br>    &#123; //是叶子节点<br>        deep<span class="hljs-comment">[x]</span> = 0;<br>        dp<span class="hljs-comment">[x]</span> = 1;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="没有上司的舞会"><a href="#没有上司的舞会" class="headerlink" title="没有上司的舞会"></a>没有上司的舞会</h3><p>子节点和其父节点不能同时参与</p>
+<p><img src="/images/cs_net/QQ截图20210618151446.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<p>状态转移方程</p>
+<p><img src="/images/cs_net/QQ截图20210618151521.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<h3 id="多重背包（非二进制）"><a href="#多重背包（非二进制）" class="headerlink" title="多重背包（非二进制）"></a>多重背包（非二进制）</h3><p><img src="/images/cs_net/QQ截图20210618152329.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;"></p>
+<p><img src="/images/cs_net/QQ截图20210618152329.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;"></p>
+<h2 id="dp优化"><a href="#dp优化" class="headerlink" title="dp优化"></a>dp优化</h2><h3 id="前缀和优化（帝国大厦）"><a href="#前缀和优化（帝国大厦）" class="headerlink" title="前缀和优化（帝国大厦）"></a>前缀和优化（帝国大厦）</h3><p><img src="/images/cs_net/QQ截图20210618152747.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs inform7">for (int i = 1; i &lt;= k; i++)<br>    &#123;<br>        for (int j = 1; j &lt;= n; j++)<br>        &#123;<br>            int bound;<br>            if (j &gt; b) // 拆除绝对值后分类讨论<br>            &#123;<br>                bound = j - (j - b - 1) / 2;  // 确定满足条件的边界值<br>                // 当j&gt;b时，x只要大于bound 均可以到达<br>                dp<span class="hljs-comment">[i % 2]</span><span class="hljs-comment">[j]</span> = ((sum<span class="hljs-comment">[(i + 1) % 2]</span><span class="hljs-comment">[n]</span> - sum<span class="hljs-comment">[(i + 1) % 2]</span><span class="hljs-comment">[bound - 1]</span> - dp<span class="hljs-comment">[(i + 1) % 2]</span><span class="hljs-comment">[j]</span>) % modx + modx) % modx;<br>            &#125;<br>            if (j &lt; b)<br>            &#123;<br>                bound = j + (b - j - 1) / 2;  // 确定满足条件的边界值<br>                // 当j&lt;b时，只要x小于bound 均可以到达<br>                dp<span class="hljs-comment">[i % 2]</span><span class="hljs-comment">[j]</span> = ((sum<span class="hljs-comment">[(i + 1) % 2]</span><span class="hljs-comment">[bound]</span> - dp<span class="hljs-comment">[(i + 1) % 2]</span><span class="hljs-comment">[j]</span>) % modx + modx) % modx;<br>            &#125;<br>            sum<span class="hljs-comment">[i % 2]</span><span class="hljs-comment">[j]</span> = (sum<span class="hljs-comment">[i % 2]</span><span class="hljs-comment">[j - 1]</span> + dp<span class="hljs-comment">[i % 2]</span><span class="hljs-comment">[j]</span>) % modx;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="单调队列优化（最大区间和）"><a href="#单调队列优化（最大区间和）" class="headerlink" title="单调队列优化（最大区间和）"></a>单调队列优化（最大区间和）</h3><p>找出不超过m的连续子区间，使其序列和最大</p>
+<p><img src="/images/cs_net/QQ截图20210618152910.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs lisp">for (<span class="hljs-name">int</span> i = <span class="hljs-number">1</span><span class="hljs-comment">; i &lt;= n; i++)</span><br>    &#123;<br>        while (!q.empty() <span class="hljs-symbol">&amp;&amp;</span> sum[q.back()] &gt; sum[i])  // 找出sum[k]的最小<br>            q.pop_back()<span class="hljs-comment">;</span><br>        q.push_back(<span class="hljs-name">i</span>)<span class="hljs-comment">;</span><br>        while (!q.empty() <span class="hljs-symbol">&amp;&amp;</span> i - m &gt; q.front())  // 弹出超出m范围限制的<br>            q.pop_front()<span class="hljs-comment">;</span><br>        ans = max(<span class="hljs-name">ans</span>, sum[i] - sum[q.front()])<span class="hljs-comment">;  // 更新结果</span><br>    &#125;<br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/cs-learning/">cs learning</a>
+                    
+                      <a class="hover-with-bg" href="/categories/cs-learning/programming/">programming</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/programming/">programming</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/10/program1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Computer Programming</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/10/Data-security/">
+                        <span class="hidden-mobile">Data security</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+<script src="/js/yinghua.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="/js/love.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"left","hOffset":-30,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ图片20210623102329.jpg">
 <meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ图片20210623102614.jpg">
 <meta property="article:published_time" content="2022-03-08T06:23:59.000Z">
-<meta property="article:modified_time" content="2022-03-10T03:15:37.157Z">
+<meta property="article:modified_time" content="2022-03-10T03:21:06.738Z">
 <meta property="article:author" content="Parlos">
 <meta property="article:tag" content="computer networks">
 <meta name="twitter:card" content="summary_large_image">
@@ -800,6 +800,48 @@ d_x(y) = min_v[c(x,v) + d_v(y)]</script><p>​    c表示从结点x到邻接结�
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
 
 
 

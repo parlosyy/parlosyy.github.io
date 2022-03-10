@@ -16,12 +16,12 @@
   <meta name="author" content="Parlos">
   <meta name="keywords" content="">
   
-    <meta name="description" content="我们将从这篇笔记中学到计算机网络自上而下的结构体系，对于整体网络有清楚的认识 应用层：两大应用程序体系结构•   CS   client-server architeture  客户-服务器体系结构​    有一个总是打开的服务器主机，服务其他客户的主机的请求 ​    在进程中发起通信的进程被叫做客户，等待联系的进程被叫做服务器 ​    进程通过套接字的软件接口发送和接收报文 ​    套接字">
+    <meta name="description" content="我们将从这篇笔记中学到计算机网络自上而下的结构体系，对于整体网络有清楚的认识 应用层两大应用程序体系结构•   CS   client-server architeture  客户-服务器体系结构​    有一个总是打开的服务器主机，服务其他客户的主机的请求 ​    在进程中发起通信的进程被叫做客户，等待联系的进程被叫做服务器 ​    进程通过套接字的软件接口发送和接收报文 ​    套接字是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Computer Network points">
 <meta property="og:url" content="https://parlosyy.github.io/2022/03/08/a/index.html">
 <meta property="og:site_name" content="Yys super blog">
-<meta property="og:description" content="我们将从这篇笔记中学到计算机网络自上而下的结构体系，对于整体网络有清楚的认识 应用层：两大应用程序体系结构•   CS   client-server architeture  客户-服务器体系结构​    有一个总是打开的服务器主机，服务其他客户的主机的请求 ​    在进程中发起通信的进程被叫做客户，等待联系的进程被叫做服务器 ​    进程通过套接字的软件接口发送和接收报文 ​    套接字">
+<meta property="og:description" content="我们将从这篇笔记中学到计算机网络自上而下的结构体系，对于整体网络有清楚的认识 应用层两大应用程序体系结构•   CS   client-server architeture  客户-服务器体系结构​    有一个总是打开的服务器主机，服务其他客户的主机的请求 ​    在进程中发起通信的进程被叫做客户，等待联系的进程被叫做服务器 ​    进程通过套接字的软件接口发送和接收报文 ​    套接字是">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://parlosyy.github.io/images/cs_net/7142610-8c83a040e6aebd52.png">
 <meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ图片20210622124727.jpg">
@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ图片20210623102329.jpg">
 <meta property="og:image" content="https://parlosyy.github.io/images/cs_net/QQ图片20210623102614.jpg">
 <meta property="article:published_time" content="2022-03-08T06:23:59.000Z">
-<meta property="article:modified_time" content="2022-03-10T04:40:34.496Z">
+<meta property="article:modified_time" content="2022-03-10T05:37:28.700Z">
 <meta property="article:author" content="Parlos">
 <meta property="article:tag" content="computer networks">
 <meta name="twitter:card" content="summary_large_image">
@@ -266,12 +266,12 @@
             
             <div class="markdown-body">
               <p>我们将从这篇笔记中学到计算机网络自上而下的结构体系，对于整体网络有清楚的认识</p>
-<h1 id="应用层："><a href="#应用层：" class="headerlink" title="应用层："></a><strong>应用层：</strong></h1><h2 id="两大应用程序体系结构"><a href="#两大应用程序体系结构" class="headerlink" title="两大应用程序体系结构"></a>两大应用程序体系结构</h2><h3 id="•-CS-client-server-architeture-客户-服务器体系结构"><a href="#•-CS-client-server-architeture-客户-服务器体系结构" class="headerlink" title="•   CS   client-server architeture  客户-服务器体系结构"></a><strong>•   CS   client-server architeture  客户-服务器体系结构</strong></h3><p>​    有一个总是打开的<strong>服务器</strong>主机，服务其他<strong>客户</strong>的主机的请求</p>
+<h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a><strong>应用层</strong></h1><h3 id="两大应用程序体系结构"><a href="#两大应用程序体系结构" class="headerlink" title="两大应用程序体系结构"></a>两大应用程序体系结构</h3><h4 id="•-CS-client-server-architeture-客户-服务器体系结构"><a href="#•-CS-client-server-architeture-客户-服务器体系结构" class="headerlink" title="•   CS   client-server architeture  客户-服务器体系结构"></a><strong>•   CS   client-server architeture  客户-服务器体系结构</strong></h4><p>​    有一个总是打开的<strong>服务器</strong>主机，服务其他<strong>客户</strong>的主机的请求</p>
 <p>​    在进程中发起通信的进程被叫做客户，等待联系的进程被叫做服务器</p>
 <p>​    进程通过<strong>套接字</strong>的软件接口发送和接收报文</p>
 <p>​    套接字是应用程序进程和<strong>运输层协议</strong>之间的接口，也被称为应用程序和网络之间的<strong>API</strong></p>
 <p>​    表示进程需要定义的两种信息：主机的<strong>IP地址</strong>，主机的<strong>端口号</strong></p>
-<h3 id="•-P2P-Peer-to-peer-architecture-P2P体系结构"><a href="#•-P2P-Peer-to-peer-architecture-P2P体系结构" class="headerlink" title="•   P2P   Peer-to-peer architecture  P2P体系结构"></a><strong>•   P2P   Peer-to-peer architecture  P2P体系结构</strong></h3><p>​    应用程序在间断连接的主机对之间直接通信，这些主机被称为<strong>对等方</strong></p>
+<h4 id="•-P2P-Peer-to-peer-architecture-P2P体系结构"><a href="#•-P2P-Peer-to-peer-architecture-P2P体系结构" class="headerlink" title="•   P2P   Peer-to-peer architecture  P2P体系结构"></a><strong>•   P2P   Peer-to-peer architecture  P2P体系结构</strong></h4><p>​    应用程序在间断连接的主机对之间直接通信，这些主机被称为<strong>对等方</strong></p>
 <h4 id="Bittorrent"><a href="#Bittorrent" class="headerlink" title="Bittorrent"></a>Bittorrent</h4><p>​    参与一个特定文件分发的所有对等方的集合被称为一个洪流，一个洪流中的所有对等方彼此下载等长度的块</p>
 <h4 id="tit-for-tat实现"><a href="#tit-for-tat实现" class="headerlink" title="tit-for-tat实现"></a>tit-for-tat实现</h4><p>​    当前主机A将选择能够以最高速率提供数据的邻居给出优先权，当此主机随机发送时，其发送速率可能也达到某目的主机B选择的最高速率的集合中，那么目的主机B将会向A发送数据，若B发送速率也满足最高速率之一的条件，B也将成为A的优先邻居之一。以此类推，对等方能以趋向于彼此的协调的速率上载</p>
 <h3 id="•-HTTP-HyperText-Transfer-Protocol-超文本传输协议"><a href="#•-HTTP-HyperText-Transfer-Protocol-超文本传输协议" class="headerlink" title="•   HTTP   HyperText Transfer Protocol 超文本传输协议"></a>•   <strong>HTTP   HyperText Transfer Protocol</strong> <strong>超文本传输协议</strong></h3><p>​    以TCP为支撑运输协议，正确快速地传输超文本文档</p>

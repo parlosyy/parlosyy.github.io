@@ -8,7 +8,7 @@ div {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer !important;
 }
 .text {
-  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer !important;
+  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png") default !important;
 }
 ::-moz-selection {
   background: #26a69a;

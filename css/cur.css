@@ -8,7 +8,19 @@ div {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer !important;
 }
 .text {
-  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/22.png"), pointer !important;
+  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer !important;
+}
+::-moz-selection {
+  background: #26a69a;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 32px;
+}
+::selection {
+  background: #26a69a;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 32px;
 }
 a:hover {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/22.png"), pointer !important;

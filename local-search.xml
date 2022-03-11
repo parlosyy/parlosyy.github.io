@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Cloud Computing 01</title>
+    <link href="/2022/03/11/cloud-01/"/>
+    <url>/2022/03/11/cloud-01/</url>
+    
+    <content type="html"><![CDATA[<h3 id="云使能技术包括哪些技术组件？简要说明其关键特征"><a href="#云使能技术包括哪些技术组件？简要说明其关键特征" class="headerlink" title="云使能技术包括哪些技术组件？简要说明其关键特征"></a>云使能技术包括哪些技术组件？简要说明其关键特征</h3><h4 id="数据中心技术"><a href="#数据中心技术" class="headerlink" title="数据中心技术"></a>数据中心技术</h4><p>数据中心是专门的IT基础设施，用于集中存放IT资源，如服务器、数据库和软件系统</p><h4 id="虚拟化技术"><a href="#虚拟化技术" class="headerlink" title="虚拟化技术"></a>虚拟化技术</h4><p>利用虚拟化软件将IT硬件抽象为虚拟服务器。</p><p>虚拟化提供了硬件无关性、服务器整合、资源复制、对资源池更强的支持和灵活的可扩展性。</p><h4 id="Web技术"><a href="#Web技术" class="headerlink" title="Web技术"></a>Web技术</h4><p>Web技术经常被用于云服务的实现，并在前段用于远程管理云IT资源。</p><p>Web架构的基本技术包括URL、HTTP、HTML和XML。</p><h4 id="多租户技术"><a href="#多租户技术" class="headerlink" title="多租户技术"></a>多租户技术</h4><p>使多个用户在逻辑上同时访问同一个应用，每个用户对其使用、管理和定制的应用程序都有自己的视图。</p><p>多租户技术具有使用隔离，数据安全，可恢复性，应用升级，可扩展性，使用计费，数据层隔离的特点。</p><h4 id="服务技术"><a href="#服务技术" class="headerlink" title="服务技术"></a>服务技术</h4><p>基于Web的服务（如Web服务和REST服务）依靠非专有通信和技术接口定义来建立基于Web技术的标准通信框架。</p><p>服务代理提供事件驱动运行时处理，适用于云中大量的功能。许多代理都自动部署在操作系统和基于云的产品中。</p><p>服务中间件（如ESB和业务流程平台）可以在云上部署。</p><h3 id="列举至少3种虚拟化软件，并概括其特点。"><a href="#列举至少3种虚拟化软件，并概括其特点。" class="headerlink" title="列举至少3种虚拟化软件，并概括其特点。"></a>列举至少3种虚拟化软件，并概括其特点。</h3><h4 id="VMWare"><a href="#VMWare" class="headerlink" title="VMWare"></a>VMWare</h4><p>支持多OS，完全隔离并且保护不同OS的操作环境，支持不同OS之间互动操作，高可用性与高功能性</p><h4 id="QEMU"><a href="#QEMU" class="headerlink" title="QEMU"></a>QEMU</h4><p>可扩展，可自定义新的指令集；开源且可移植，仿真速度快，运行速度稳定。</p><h4 id="Hype-V"><a href="#Hype-V" class="headerlink" title="Hype - V"></a>Hype - V</h4><p>采用微内核的架构，底层代码精简，兼顾了安全性和性能的要求；支持半虚拟化和全虚拟化双模拟方式</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>cs learning</category>
+      
+      <category>Cloud Computing</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Cloud Computing</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Computer Programming —— graph</title>
     <link href="/2022/03/10/program2/"/>
     <url>/2022/03/10/program2/</url>

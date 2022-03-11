@@ -4,12 +4,6 @@ body{
 div {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/11.png"), default !important;
 }
-.layout_post {
-  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), text !important;
-}
-.text {
-  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png") text !important;
-}
 ::-moz-selection {
   background: #26a69a;
   color: #ffffff;
@@ -31,8 +25,14 @@ a:hover span {
 a:hover span {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), text !important;
 }
+a:hover .layout_post {
+  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), text !important;
+}
 div:hover img {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/22.png"), pointer !important;
+}
+div:hover .layout_post {
+  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), text !important;
 }
 div:hover span {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/22.png"), pointer !important;
@@ -42,9 +42,6 @@ div:hover span {
 }
 div:hover button {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/22.png"), pointer !important;
-}
-div:hover text {
-  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer !important;
 }
 div:hover textarea {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), text !important;

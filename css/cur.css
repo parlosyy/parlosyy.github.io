@@ -4,11 +4,11 @@ body{
 div {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/11.png"), default !important;
 }
-.layout_post .tag_share .post-meta__tags {
+.layout_post {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer !important;
 }
 .text {
-  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png") default !important;
+  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png") text !important;
 }
 ::-moz-selection {
   background: #26a69a;

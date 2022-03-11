@@ -5,7 +5,7 @@ div {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/11.png"), default !important;
 }
 .layout_post {
-  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer !important;
+  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), text !important;
 }
 .text {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png") text !important;
@@ -41,7 +41,7 @@ div:hover text {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer !important;
 }
 div:hover textarea {
-  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer auto;
+  cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), text !important;
 }
 div:hover input {
   cursor: url("https://cdn.jsdelivr.net/gh/Sanscan12/Sanscan12.github.io/shubiao/33.png"), pointer !important;
